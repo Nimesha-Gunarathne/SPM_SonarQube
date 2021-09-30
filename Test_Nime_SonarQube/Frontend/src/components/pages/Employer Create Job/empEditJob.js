@@ -271,8 +271,8 @@ class EmployerCreateJob extends Component {
                                                     <h4 className="page-title">Edit Job</h4>
                                                     <ol className="breadcrumb">
                                                         <li className="breadcrumb-item"><a href="javascript:void(0);">Job Bank</a></li>
-                                                        <li className="breadcrumb-item"><a href="javascript:void(0);">Jobs</a></li>
-                                                        <li className="breadcrumb-item active">Edit Jobs</li>
+                                                        <li className="breadcrumb-item"><a href="javascript:void(0);">Vacancies</a></li>
+                                                        <li className="breadcrumb-item active">Edit Vacancy</li>
                                                     </ol>
                                                 </div>
 

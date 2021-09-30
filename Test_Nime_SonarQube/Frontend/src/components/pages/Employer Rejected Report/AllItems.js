@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import Navbar from '../Employernavibar';
 
-const UserID = localStorage.getItem("LocalUserID");
+const JobID = localStorage.getItem("employerApplicationJobID");
 
 export default class AllItems extends Component {
 
@@ -33,7 +33,7 @@ export default class AllItems extends Component {
 
     componentDidMount() {
 
-        axios.get(`${APIURL}/Applicant/rejectedApplication`)
+        axios.get(`${APIURL}/Applicant/getJobAppliedDetailsBYJOBID/${JobID}`)
 
             .then(response => {
 
@@ -71,13 +71,17 @@ export default class AllItems extends Component {
                                 <th>Email</th>
                             </tr>
                             {this.state.Jobs.length > 0 && this.state.Jobs.map((item, index) => (
-                                <tr>
-                                    <td>{item.job_title}</td>
-                                    <td>{item.Applicant_Name}</td>
-                                    <td>{item.Description}</td>
-                                    <td>{item.Email}</td>
+                                <>
+                                    {item.IsApprove == 2 && (
+                                        <tr>
+                                            <td>{item.job_title}</td>
+                                            <td>{item.Applicant_Name}</td>
+                                            <td>{item.Description}</td>
+                                            <td>{item.Email}</td>
 
-                                </tr>
+                                        </tr>
+                                    )}
+                                </>
                             ))}
 
                         </thead>

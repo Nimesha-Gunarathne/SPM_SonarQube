@@ -158,7 +158,7 @@ class EmjobApplications extends Component {
                                                 <h4 className="page-title">Appications</h4>
                                                 <ol className="breadcrumb">
                                                     <li className="breadcrumb-item"><a href="javascript:void(0);">Job Bank</a></li>
-                                                    <li className="breadcrumb-item active">applications</li>
+                                                    <li className="breadcrumb-item active">All Applications</li>
                                                 </ol>
                                             </div>
                                             {/*end col*/}

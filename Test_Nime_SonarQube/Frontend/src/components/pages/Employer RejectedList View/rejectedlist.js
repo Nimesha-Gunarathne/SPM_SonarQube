@@ -7,8 +7,6 @@ import Daybar from '../DayBar';
 
 const JobID = localStorage.getItem("employerApplicationJobID");
 
-const UserID = localStorage.getItem("LocalUserID");
-
 class RejectedList extends Component {
 
   constructor(props) {
@@ -103,7 +101,7 @@ class RejectedList extends Component {
                   <a href="/EmpRejectedListReport"><button type="button" className="btn btn-primary btn-sm" style={{ marginLeft: "1050px" }}
                   >Genarate Report</button></a>
                 </li>
-                <div className="col-12">
+                <div className="col-12" style = {{marginTop:"10px"}}>
                   <div className="card">
                     <div className="card-header">
                     </div>
@@ -137,7 +135,7 @@ class RejectedList extends Component {
                                       <td className="text-center">
                                         <div className="button-items">
                                           <button type="button" className="btn btn-success waves-effect waves-light"
-                                            onClick={e => this.onShortList(e, item._id)}>Select</button>
+                                            onClick={e => this.onShortList(e, item._id)}>Move to Pending</button>
 
                                         </div>
                                       </td>
