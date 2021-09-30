@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import Navbar from '../Employernavibar';
 import Daybar from '../DayBar';
 
+const JobID = localStorage.getItem("employerApplicationJobID");
+
 const UserID = localStorage.getItem("LocalUserID");
 
 class RejectedList extends Component {
@@ -16,7 +18,6 @@ class RejectedList extends Component {
 
     this.state = {
       Jobs: [],
-
     }
   }
 
@@ -28,7 +29,6 @@ class RejectedList extends Component {
     };
 
     console.log("reopen Details : ", approve);
-
     axios
       .put(`${APIURL}/Applicant/approveforjob/${jobID}`, approve)
       .then((res) => {
@@ -36,13 +36,13 @@ class RejectedList extends Component {
         if (res.data.code === 200) {
           console.log("res.data.code", res.data.code);
 
-          toast.success("Application Moved to Pending...");
-
+          toast.success("Approved the application");
           window.setTimeout(function () {
             window.location.reload();
           }, 1500);
         } else {
           toast.error(res.data.message);
+
         }
       });
   }
@@ -55,8 +55,7 @@ class RejectedList extends Component {
   }
 
   componentDidMount() {
-
-    axios.get(`${APIURL}/Applicant/rejectedApplication`)
+    axios.get(`${APIURL}/Applicant/getJobAppliedDetailsBYJOBID/${JobID}`)
 
       .then(response => {
 
@@ -92,7 +91,6 @@ class RejectedList extends Component {
                     </div>
                     {/*end row*/}
                   </div>
-
                   {/*end page-title-box*/}
                 </div>
                 {/*end col*/}
@@ -105,14 +103,13 @@ class RejectedList extends Component {
                   <a href="/EmpRejectedListReport"><button type="button" className="btn btn-primary btn-sm" style={{ marginLeft: "1050px" }}
                   >Genarate Report</button></a>
                 </li>
-                <div className="col-12" style={{ marginTop: "10px" }}>
+                <div className="col-12">
                   <div className="card">
                     <div className="card-header">
                     </div>
                     {/*end card-header*/}
                     <div className="card-body">
                       <div className="table-responsive">
-
                         <div id="viewtable">
                           <h3 style={{ 'textAlign': 'center' }}>
                             Rejected Applications
@@ -129,20 +126,26 @@ class RejectedList extends Component {
                             </thead>
                             <tbody>
                               {this.state.Jobs.length > 0 && this.state.Jobs.map((item, index) => (
-                                <tr>
-                                  <td>{item.job_title}</td>
-                                  <td>{item.Applicant_Name}</td>
-                                  <td>{item.Description}</td>
-                                  <td>{item.Email}</td>
-                                  <td className="text-center">
-                                    <div className="button-items">
-                                      <button type="button" className="btn btn-success waves-effect waves-light"
-                                        onClick={e => this.onShortList(e, item._id)}>Move to Pending</button>
-                                    </div>
-                                  </td>
-                                </tr>
+                                <>
+                                  {item.IsApprove == 2 && (
 
+                                    <tr>
+                                      <td>{item.job_title}</td>
+                                      <td>{item.Applicant_Name}</td>
+                                      <td>{item.Description}</td>
+                                      <td>{item.Email}</td>
+                                      <td className="text-center">
+                                        <div className="button-items">
+                                          <button type="button" className="btn btn-success waves-effect waves-light"
+                                            onClick={e => this.onShortList(e, item._id)}>Select</button>
+
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  )}
+                                </>
                               ))}
+
                             </tbody>
                           </table>
                         </div>
@@ -167,7 +170,6 @@ class RejectedList extends Component {
         {/* end page-wrapper */}
         {/* jQuery  */}
         {/* App js */}
-
       </div>
     );
   }
