@@ -120,7 +120,7 @@ class Admin_Employer_Request_List extends Component {
                           style={{
                             borderCollapse: "collapse",
                             borderSpacing: 0,
-                            width: "100%",
+                            width: "120%",
                           }}
                         >
                           <thead>

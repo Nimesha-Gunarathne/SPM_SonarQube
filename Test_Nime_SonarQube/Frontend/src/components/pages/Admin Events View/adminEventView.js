@@ -83,7 +83,7 @@ class AdminEventView extends Component {
                             {this.state.Jobs.length > 0 && this.state.Jobs.map((item, index) => (
                                 <div className="row">
                                     <div className="col-lg-4" key={index} >
-                                        <div className="card" style={{ height: "250px", width: "1200px" }}>
+                                        <div className="card" style={{ height: "250px", width: "1000px", marginLeft: "130px" }}>
                                             <div className="card-body">
                                                 <div className="media mb-3">
                                                     <img src="assets/images/widgets/project2.jpg" alt="" className="thumb-md rounded-circle" />
@@ -91,7 +91,7 @@ class AdminEventView extends Component {
                                                         <h4 className="m-0 font-weight-semibold text-dark font-16">{item.eventTitle}</h4>
 
                                                         <button type="button" className="btn btn-warning"
-                                                            style={{ marginLeft: "1000px", marginTop: "-30px" }}
+                                                            style={{ marginLeft: "800px", marginTop: "-30px" }}
                                                             onClick={e => this.navigateWithID(e, item._id)}>Edit</button>
                                                     </div>
                                                 </div>
